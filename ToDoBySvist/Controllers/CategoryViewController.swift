@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import ChameleonFramework
 
 class CategoryViewController: UITableViewController {
     
@@ -16,6 +17,8 @@ class CategoryViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.separatorStyle = .none
         
         loadCategories()
 
@@ -34,6 +37,8 @@ class CategoryViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
         cell.textLabel?.text = categories[indexPath.row].name
+        
+        cell.backgroundColor = UIColor.randomFlat()
         
         return cell
         
@@ -117,6 +122,7 @@ class CategoryViewController: UITableViewController {
             
             let newCategory = Category(context: self.context)
             newCategory.name = textField.text!
+            
             
             self.categories.append(newCategory)
             
