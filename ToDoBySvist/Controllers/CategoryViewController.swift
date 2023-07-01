@@ -58,13 +58,26 @@ class CategoryViewController: UITableViewController {
         
     if editingStyle == .delete {
                     
-                    categories.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
+                    deleteCategories(at: indexPath)
                 }
     }
     
     
     //MARK: - Data Manipulation Methods
+    
+    func deleteCategories(at indexPath: IndexPath) {
+        let item = categories[indexPath.row]
+
+        context.delete(item)
+        
+        do {
+            try context.save()
+            categories.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } catch {
+            print("Error deleting cell: \(error)")
+        }
+    }
     
     func saveCategories() {
         do {

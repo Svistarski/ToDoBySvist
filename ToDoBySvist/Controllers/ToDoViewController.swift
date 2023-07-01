@@ -61,9 +61,8 @@ class ToDoViewController: UITableViewController {
         
     if editingStyle == .delete {
                     
-                    itemArray.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                }
+        deleteItems(at: indexPath)
+    }
     }
     
     //MARK: - Add New Items
@@ -100,6 +99,20 @@ class ToDoViewController: UITableViewController {
     
     //MARK - Model Manupulation Methods
     
+    func deleteItems(at indexPath: IndexPath) {
+        let item = itemArray[indexPath.row]
+
+        context.delete(item)
+        
+        do {
+            try context.save()
+            itemArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } catch {
+            print("Error deleting cell: \(error)")
+        }
+    }
+
     func saveItems() {
         
         do {
