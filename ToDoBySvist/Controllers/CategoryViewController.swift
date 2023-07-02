@@ -14,14 +14,14 @@ class CategoryViewController: UITableViewController {
     var categories = [Category]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.separatorStyle = .none
         
         loadCategories()
-
+        
     }
     
     //MARK: - TableView Datasource Methods
@@ -38,12 +38,12 @@ class CategoryViewController: UITableViewController {
         
         cell.textLabel?.text = categories[indexPath.row].name
         
-        cell.backgroundColor = UIColor.randomFlat()
+        cell.backgroundColor = UIColor(hexString: categories[indexPath.row].color ?? "5B808D")
         
         return cell
         
     }
-
+    
     
     //MARK: - TableView Delegate Methods
     
@@ -61,10 +61,10 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-    if editingStyle == .delete {
-                    
-                    deleteCategories(at: indexPath)
-                }
+        if editingStyle == .delete {
+            
+            deleteCategories(at: indexPath)
+        }
     }
     
     
@@ -72,7 +72,7 @@ class CategoryViewController: UITableViewController {
     
     func deleteCategories(at indexPath: IndexPath) {
         let item = categories[indexPath.row]
-
+        
         context.delete(item)
         
         do {
@@ -104,14 +104,14 @@ class CategoryViewController: UITableViewController {
         } catch {
             print("Error loading categories \(error)")
         }
-       
+        
         tableView.reloadData()
         
     }
     
     
     //MARK: - Add New Categories
-
+    
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         var textField = UITextField()
@@ -122,7 +122,7 @@ class CategoryViewController: UITableViewController {
             
             let newCategory = Category(context: self.context)
             newCategory.name = textField.text!
-            
+            newCategory.color = UIColor.randomFlat().hexValue()
             
             self.categories.append(newCategory)
             

@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import ChameleonFramework
 
 class ToDoViewController: UITableViewController {
     
@@ -23,6 +24,7 @@ class ToDoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.separatorStyle = .none
         
     }
     
@@ -39,6 +41,11 @@ class ToDoViewController: UITableViewController {
         let item = itemArray[indexPath.row]
         
         cell.textLabel?.text = item.title
+        
+        if let color = UIColor(hexString: (selectedCategory?.color)!)?.darken(byPercentage: CGFloat(indexPath.row)/CGFloat(itemArray.count)) {
+            cell.backgroundColor = color
+            cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+        }
         
         cell.accessoryType = item.done ? .checkmark : .none
         
