@@ -24,6 +24,26 @@ class CategoryViewController: UITableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        loadCategories()
+        
+        guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.")
+        }
+        
+        if let navBarColor = UIColor(hexString: "C9BEAF") {
+            
+            navBar.backgroundColor = navBarColor
+            
+            navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+            
+            navBar.largeTitleTextAttributes = [.foregroundColor: ContrastColorOf(navBarColor, returnFlat: true)]
+            
+            tableView.backgroundColor = navBarColor
+        }
+    }
+
+    
     //MARK: - TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -36,12 +56,19 @@ class CategoryViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         
-        cell.textLabel?.text = categories[indexPath.row].name
+        let category = categories[indexPath.row]
         
-        cell.backgroundColor = UIColor(hexString: categories[indexPath.row].color ?? "5B808D")
+        cell.textLabel?.text = category.name
+        
+        if let categoryColor = UIColor(hexString: category.color ?? "FFFFEE") {
+            
+            cell.backgroundColor = categoryColor
+            
+            cell.textLabel?.textColor = ContrastColorOf(categoryColor, returnFlat: true)
+            
+        }
         
         return cell
-        
     }
     
     
@@ -71,9 +98,9 @@ class CategoryViewController: UITableViewController {
     //MARK: - Data Manipulation Methods
     
     func deleteCategories(at indexPath: IndexPath) {
-        let item = categories[indexPath.row]
+        let category = categories[indexPath.row]
         
-        context.delete(item)
+        context.delete(category)
         
         do {
             try context.save()

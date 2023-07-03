@@ -11,6 +11,8 @@ import ChameleonFramework
 
 class ToDoViewController: UITableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var itemArray = [Item]()
     
     var selectedCategory : Category? {
@@ -26,6 +28,44 @@ class ToDoViewController: UITableViewController {
 
         tableView.separatorStyle = .none
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        if let hexColor = selectedCategory?.color {
+            
+            title = selectedCategory!.name
+            
+            guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist") }
+            
+            if let navBarColor = UIColor(hexString: hexColor) {
+                
+                navBar.backgroundColor = navBarColor
+                
+                navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+                
+                navBar.largeTitleTextAttributes = [.foregroundColor: ContrastColorOf(navBarColor, returnFlat: true)]
+                
+                searchBar.barTintColor = navBarColor
+                
+                tableView.backgroundColor = navBarColor
+            
+                
+                if let textField = searchBar.value(forKey: "searchField") as? UITextField {
+                    let placeholderColor = ContrastColorOf(navBarColor, returnFlat: true)
+                    
+                    textField.attributedPlaceholder = NSAttributedString(string: "Placeholder Text", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+                    
+                    if let searchIconView = textField.leftView as? UIImageView {
+                        let newSearchIcon = searchIconView.image?.withRenderingMode(.alwaysTemplate)
+                        searchIconView.image = newSearchIcon
+                        searchIconView.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+                    }
+                }
+            }
+            
+            
+        }
     }
     
     //MARK: - Tableview Datasource Methods
@@ -104,7 +144,7 @@ class ToDoViewController: UITableViewController {
         
     }
     
-    //MARK - Model Manupulation Methods
+    //    MARK: - Model Manupulation Methods
     
     func deleteItems(at indexPath: IndexPath) {
         let item = itemArray[indexPath.row]
