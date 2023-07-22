@@ -55,6 +55,8 @@ class ToDoViewController: UITableViewController {
                     let placeholderColor = ContrastColorOf(navBarColor, returnFlat: true)
                     
                     textField.attributedPlaceholder = NSAttributedString(string: "Placeholder Text", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+                    textField.textColor = ContrastColorOf(navBarColor, returnFlat: true)
+                    textField.placeholder = ""
                     
                     if let searchIconView = textField.leftView as? UIImageView {
                         let newSearchIcon = searchIconView.image?.withRenderingMode(.alwaysTemplate)
@@ -118,9 +120,9 @@ class ToDoViewController: UITableViewController {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Task", message: "", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
+        let action = UIAlertAction(title: "Add Task", style: .default) { (action) in
             
             let newItem = Item(context: self.context)
             newItem.title = textField.text!
@@ -132,7 +134,7 @@ class ToDoViewController: UITableViewController {
         }
         
         alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Create new item"
+            alertTextField.placeholder = "Type Something"
             textField = alertTextField
             
         }

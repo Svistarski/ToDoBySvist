@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import ChameleonFramework
 
-class CategoryViewController: UITableViewController {
+class SectionViewController: UITableViewController {
     
     var categories = [Category]()
     
@@ -143,7 +143,7 @@ class CategoryViewController: UITableViewController {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Section", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             
@@ -161,7 +161,7 @@ class CategoryViewController: UITableViewController {
         
         alert.addTextField { (field) in
             textField = field
-            textField.placeholder = "Add a new category"
+            textField.placeholder = "Type Something"
         }
         
         present(alert, animated: true, completion: nil)

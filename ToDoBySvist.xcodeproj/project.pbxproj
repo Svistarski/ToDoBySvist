@@ -14,7 +14,7 @@
 		2810A75B2A4A183200E152AA /* ToDoBySvist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2810A7592A4A183200E152AA /* ToDoBySvist.xcdatamodeld */; };
 		2810A75D2A4A183500E152AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2810A75C2A4A183500E152AA /* Assets.xcassets */; };
 		2810A7602A4A183500E152AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2810A75E2A4A183500E152AA /* LaunchScreen.storyboard */; };
-		28FFB0DB2A4B40CA000C3DBB /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB0DA2A4B40CA000C3DBB /* CategoryViewController.swift */; };
+		28FFB0DB2A4B40CA000C3DBB /* SectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FFB0DA2A4B40CA000C3DBB /* SectionViewController.swift */; };
 		4500D79E71AB7F0D200F1D1D /* libPods-ToDoBySvist.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FCE828A9EA55B19EFA25D9 /* libPods-ToDoBySvist.a */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +28,7 @@
 		2810A75C2A4A183500E152AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2810A75F2A4A183500E152AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2810A7612A4A183500E152AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28FFB0DA2A4B40CA000C3DBB /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		28FFB0DA2A4B40CA000C3DBB /* SectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewController.swift; sourceTree = "<group>"; };
 		3AA436943D54A76052E812C0 /* Pods-ToDoBySvist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoBySvist.release.xcconfig"; path = "Target Support Files/Pods-ToDoBySvist/Pods-ToDoBySvist.release.xcconfig"; sourceTree = "<group>"; };
 		82804F3141EC03A6EB60D37B /* Pods-ToDoBySvist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoBySvist.debug.xcconfig"; path = "Target Support Files/Pods-ToDoBySvist/Pods-ToDoBySvist.debug.xcconfig"; sourceTree = "<group>"; };
 		E7FCE828A9EA55B19EFA25D9 /* libPods-ToDoBySvist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToDoBySvist.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,18 +71,26 @@
 				2810A7522A4A183200E152AA /* SceneDelegate.swift */,
 				28DE2BFE2A504818000E8EE4 /* Controllers */,
 				28DE2BFF2A50483E000E8EE4 /* Views */,
-				2810A75C2A4A183500E152AA /* Assets.xcassets */,
+				28B129902A532ED800115683 /* Models */,
 				2810A75E2A4A183500E152AA /* LaunchScreen.storyboard */,
+				2810A75C2A4A183500E152AA /* Assets.xcassets */,
 				2810A7612A4A183500E152AA /* Info.plist */,
-				2810A7592A4A183200E152AA /* ToDoBySvist.xcdatamodeld */,
 			);
 			path = ToDoBySvist;
+			sourceTree = "<group>";
+		};
+		28B129902A532ED800115683 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2810A7592A4A183200E152AA /* ToDoBySvist.xcdatamodeld */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		28DE2BFE2A504818000E8EE4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				28FFB0DA2A4B40CA000C3DBB /* CategoryViewController.swift */,
+				28FFB0DA2A4B40CA000C3DBB /* SectionViewController.swift */,
 				2810A7542A4A183200E152AA /* ToDoViewController.swift */,
 			);
 			path = Controllers;
@@ -210,7 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28FFB0DB2A4B40CA000C3DBB /* CategoryViewController.swift in Sources */,
+				28FFB0DB2A4B40CA000C3DBB /* SectionViewController.swift in Sources */,
 				2810A7552A4A183200E152AA /* ToDoViewController.swift in Sources */,
 				2810A7512A4A183200E152AA /* AppDelegate.swift in Sources */,
 				2810A75B2A4A183200E152AA /* ToDoBySvist.xcdatamodeld in Sources */,
